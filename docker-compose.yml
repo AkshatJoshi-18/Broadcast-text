@@ -11,8 +11,8 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     volumes:
-      - ./mysql-data:/var/lib/mysql
-      - ./message.sql:/docker-entrypoint-initdb.d/message.sql  
+      - mysql-data:/var/lib/mysql
+
     networks:
       - twotier
     healthcheck:
@@ -46,3 +46,6 @@ services:
 
 networks:
   twotier:
+
+volumes:
+  mysql-data:
