@@ -11,7 +11,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     volumes:
-      - ./mysql-data:/var/lib/mysqlAdd commentMore actions
+      - mysql-data:/var/lib/mysql
       - ./message.sql:/docker-entrypoint-initdb.d/message.sql  
 
     networks:
@@ -47,3 +47,6 @@ services:
 
 networks:
   twotier:
+
+volumes:
+  mysql-data:
