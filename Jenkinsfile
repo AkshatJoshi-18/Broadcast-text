@@ -1,6 +1,6 @@
 pipeline{
 
-    agent any;
+    agent {lable "Dev1"};
 
     stages{
         stage("code"){
