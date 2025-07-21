@@ -37,6 +37,8 @@ pipeline{
 
         stage("deploy"){
             steps{
+                sh "docker image prune -f"
+                sh "free -h"
                 sh "docker compose down "
                 sh "docker compose up -d --build flask-app"
                 echo "deploy done ...."
