@@ -46,4 +46,21 @@ pipeline{
         }
         
     }
+
+    post{
+        success{
+            emailext(
+                to : 'devloperpromax@yopmail.com',
+                subject : "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body : "Good news! Build was successful.\n\nCheck it here: ${env.BUILD_URL}"
+            )
+        }
+        failure{
+            emailext(
+                to : 'devloperpromax@yopmail.com',
+                subject : "❌❌Build Failed❌❌: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body : "Bad news! Build was failed.\n\nCheck it here: ${env.BUILD_URL}"
+            )
+        }
+    }
 }
