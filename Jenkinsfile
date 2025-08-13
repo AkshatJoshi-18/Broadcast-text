@@ -12,7 +12,7 @@ pipeline{
         
         stage("build"){
             steps{
-                sh "docker build -t akshat8630/two-tier-flask-app:latest ."
+                sh "docker build -t akshat8630/two-tier-flask-app:latest -f Dockerfile-multistage ."
                 echo "build done ...."
             }
         }
@@ -37,6 +37,7 @@ pipeline{
 
         stage("deploy"){
             steps{
+                sh "docker system prune"
                 sh "docker image prune -f"
                 sh "free -h"
                 sh "docker compose down "
