@@ -12,7 +12,7 @@ pipeline{
         
         stage("build"){
             steps{
-                sh "docker build -t akshat8630/two-tier-flask-app:latest -f Dockerfile-multistage ."
+                sh "docker build -t akshat8630/Broadcast-text:latest -f Dockerfile-multistage ."
                 echo "build done ...."
             }
         }
@@ -24,7 +24,7 @@ pipeline{
                 usernameVariable : "dockerHubUser"
                 )]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker image push ${env.dockerHubUser}/two-tier-flask-app:latest"
+                    sh "docker image push ${env.dockerHubUser}/Broadcast-text:latest"
                 }
             }
         }
