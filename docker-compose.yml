@@ -2,8 +2,10 @@ version: "3.8"
 
 services:
   mysql:
-    image: mysql:5.7
+    image: akshat8630/mysql-5.7:latest
     container_name: mysql
+    cap_add:     #permission to modify iptables
+      - NET_ADMIN
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devops
@@ -12,9 +14,9 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./message.sql:/docker-entrypoint-initdb.d/message.sql  
-
     networks:
-      - twotier
+      - app-net
+    
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
       interval: 10s
@@ -34,18 +36,20 @@ services:
       MYSQL_DB: devops
     depends_on:
       - mysql
+    cap_add:     #permission to modify iptables
+      - NET_ADMIN   
     networks:
-      - twotier
+      - app-net
     restart: always
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://mysql:5000/health || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 30s
 
 networks:
-  twotier:
+ app-net:
 
 volumes:
   mysql-data:
