@@ -1,11 +1,5 @@
 FROM mariadb:11.4
 
-RUN apt-get update && \
-    apt-get install -y iptables netcat-openbsd && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update 
 
-COPY entrypoint-mysql.sh /usr/local/bin/entrypoint-mysql.sh
-RUN chmod +x /usr/local/bin/entrypoint-mysql.sh
-
-ENTRYPOINT ["entrypoint-mysql.sh"]
 CMD ["mariadbd"]

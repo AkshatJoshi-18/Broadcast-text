@@ -24,11 +24,7 @@ COPY . .
 
 # Install runtime dependencies only
 RUN apt-get update && \
-    yes | apt-get install ncat && \
     apt-get install -y --no-install-recommends libmariadb3 && \
-    apt-get install -y iptables && \
-    chmod +x /app/entrypoint-flask-app.sh && \
     rm -rf /var/lib/apt/lists/*
 
-
-ENTRYPOINT ["./entrypoint-flask-app.sh"]
+CMD [ "python", "app.py" ]
