@@ -5,4 +5,4 @@ iptables -A OUTPUT -d 127.0.0.1/8 -j ACCEPT
 iptables -A OUTPUT -j DROP
 
 # Start MySQL normally
-mysqld
+exec docker-entrypoint.sh mysqld
