@@ -8,3 +8,4 @@ COPY entrypoint-mysql.sh /usr/local/bin/entrypoint-mysql.sh
 RUN chmod +x /usr/local/bin/entrypoint-mysql.sh
 
 ENTRYPOINT ["entrypoint-mysql.sh"]
+CMD ["mariadbd"]
