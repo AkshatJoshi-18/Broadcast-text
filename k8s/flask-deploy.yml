@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: flask-app-container
-          image: akshat8630/Broadcast-text
+          image: akshat8630/broadcast-text
           env:
             - name: MYSQL_HOST
               value: ttfa-mysql-service

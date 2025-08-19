@@ -5,14 +5,14 @@ pipeline{
     stages{
         stage("code"){
             steps{
-                git url : "https://github.com/AkshatJoshi-18/Broadcast-text", branch : "master"
+                git url : "https://github.com/AkshatJoshi-18/broadcast-text", branch : "master"
                 echo "clone done ...."
             }
         }
         
         stage("build"){
             steps{
-                sh "docker build -t akshat8630/Broadcast-text:latest -f Dockerfile-multistage ."
+                sh "docker build -t akshat8630/broadcast-text:latest -f Dockerfile-multistage ."
                 echo "build done ...."
             }
         }
@@ -24,7 +24,7 @@ pipeline{
                 usernameVariable : "dockerHubUser"
                 )]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker image push ${env.dockerHubUser}/Broadcast-text:latest"
+                    sh "docker image push ${env.dockerHubUser}/broadcast-text:latest"
                 }
             }
         }
