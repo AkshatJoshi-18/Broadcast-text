@@ -40,6 +40,8 @@ pipeline{
         stage("deploy"){
             steps{
                 sh "docker system prune"
+                sh "docker-compose down -v"
+                sh "docker volume prune -f"
                 sh "docker image prune -f"
                 sh "free -h"
                 sh "docker compose down "
