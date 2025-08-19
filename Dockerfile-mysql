@@ -1,4 +1,4 @@
-FROM mysql:5.7
+FROM mariadb:11.4
 
 # RUN apt-get update && \
 #     apt-get install -y iptables && \
