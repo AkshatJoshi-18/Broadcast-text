@@ -1,10 +1,11 @@
 FROM mariadb:11.4
 
-# RUN apt-get update && \
-#     apt-get install -y iptables && \
-#     rm -rf /var/lib/apt/lists/*
-RUN yum install -y iptables && yum install -y netcat && yum clean all
+RUN apt-get update && \
+    apt-get install -y iptables netcat && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY entrypoint-mysql.sh /usr/local/bin/entrypoint-mysql.sh
 RUN chmod +x /usr/local/bin/entrypoint-mysql.sh
 
 ENTRYPOINT ["entrypoint-mysql.sh"]
+
