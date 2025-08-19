@@ -13,7 +13,7 @@ pipeline{
         stage("build"){
             steps{
                 sh "docker build -t akshat8630/broadcast-text:latest -f Dockerfile-multistage ."
-                sh "docker build -t akshat8630/mysql-5.7:latest -f Dockerfile-mysql ."
+                sh "docker build -t akshat8630/database:latest -f Dockerfile-mysql ."
                 echo "build done ...."
             }
         }
@@ -26,7 +26,7 @@ pipeline{
                 )]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                     sh "docker image push ${env.dockerHubUser}/broadcast-text:latest"
-                    sh "docker image push ${env.dockerHubUser}/mysql-5.7:latest"
+                    sh "docker image push ${env.dockerHubUser}/database:latest"
                 }
             }
         }

@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   mysql:
-    image: akshat8630/mysql-5.7:latest
+    image: akshat8630/database:latest
     container_name: mysql
     cap_add:     #permission to modify iptables
       - NET_ADMIN
