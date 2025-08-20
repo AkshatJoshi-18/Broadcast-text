@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ttfa-mysql-service
-  namespace: ttfa-ns
+  name: app-mysql-service
+  namespace: app-ns
 spec:
   selector:
     app: mysql-app

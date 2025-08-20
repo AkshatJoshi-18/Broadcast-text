@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flask-deployment
-  namespace: ttfa-ns
+  namespace: app-ns
   labels:
     app: flask-app
 spec: 
@@ -20,7 +20,7 @@ spec:
           image: akshat8630/broadcast-text
           env:
             - name: MYSQL_HOST
-              value: ttfa-mysql-service
+              value: app-mysql-service
             - name: MYSQL_USER
               value: admin
             - name: MYSQL_PASSWORD

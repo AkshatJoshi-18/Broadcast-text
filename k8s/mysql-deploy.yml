@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-deployment
-  namespace: ttfa-ns
+  namespace: app-ns
   labels:
     app: mysql-app
 spec:
@@ -16,7 +16,7 @@ spec:
         app: mysql-app
     spec:
       containers:
-        - name: ttfa-mysql-container
+        - name: app-mysql-container
           image: mariadb:10.5
           env:
             - name: MYSQL_ROOT_PASSWORD
